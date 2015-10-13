@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>template-zero</name>
+=======
+	<name>Template-Zero</name>
+>>>>>>> 4276d162717df2d1c0391f3050f9bb7afb969906
 	<comment></comment>
 	<projects>
 	</projects>
