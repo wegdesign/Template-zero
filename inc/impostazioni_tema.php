@@ -1,7 +1,9 @@
 <?php
+
 /*
 * Questo file mi permettera' di creare le opzioni necessarie per creare il pannello di impostazioni del tema
 */
+
 function pagina_impostazioni_tema_cb(){
 	
    $pagina_impostazioni= add_theme_page(
@@ -11,7 +13,9 @@ function pagina_impostazioni_tema_cb(){
        __FILE__, // Slug della pagina, utilizziamo __FILE__ per dare uno slug unico
        'impostazioni_tema_cb' // Funzione incaricata di creare il layout della pagina
    );
+
 }
+
 function impostazioni_tema_cb(){
 ?>
     <div class="wrap">
@@ -28,12 +32,14 @@ function impostazioni_tema_cb(){
     </div>
 <?php
 }
+
 //Registro le nostre impostazioni, la sezione e i suoi campi
 function impostazioni_tema_init_cb(){
     register_setting( 'opt_impostazioni_tema', 'opt_impostazioni_tema', 'validazione_impostazioni_tema' );
     add_settings_section( 'main_section', 'Sezione Principale', 'testo_sezione_cb', __FILE__ );
     add_settings_field( 'logo', 'Logo', 'carico_logo_cb', __FILE__, 'main_section' );
 }
+
 function testo_sezione_cb(){
   echo "<p>Da qui puoi vedere il logo caricato.</p>";
   $options = get_option('opt_impostazioni_tema');
@@ -43,10 +49,12 @@ function testo_sezione_cb(){
   }
   
 }
+
 function carico_logo_cb(){
 	echo '<p>Carica qui il tuo file:</p>';
    echo '<input type="file" name="logo" />';
 }
+
 function validazione_impostazioni_tema( $input ){
     //echo "<pre>"; print_r( $_FILES ); echo "</pre>";
     foreach( $_FILES as $image ){
@@ -55,6 +63,7 @@ function validazione_impostazioni_tema( $input ){
             if ( preg_match('/(jpg|jpeg|png|gif)$/i', $image['type'] ) ){
                 $sovrascrivi = array('test_form' => false );
                 $file = wp_handle_upload( $image, $sovrascrivi );
+
                 $input['logo'] = $file['url'];
             } else {
                 wp_die( 'Nessuna immagine e&amp;grave; stata caricata' );
@@ -67,6 +76,17 @@ function validazione_impostazioni_tema( $input ){
     }
     return $input;
 }
+
 add_action( 'admin_init', 'impostazioni_tema_init_cb' );
+
 add_action('admin_menu', 'pagina_impostazioni_tema_cb');
-?>
+
+
+
+
+
+
+
+
+
+
