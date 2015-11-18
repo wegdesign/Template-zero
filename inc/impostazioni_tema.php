@@ -18,7 +18,7 @@ function pagina_impostazioni_tema_cb(){
 
 function impostazioni_tema_cb(){
 ?>
-    <div class="wrap">
+    <div class="themex-page">
         <div class="icon32" id="icon-options-general"><br /></div>
         <h2>La Pagina Impostazioni per il Mio Tema</h2>
         <p>Un p&ograve; di testo descrittivo per le nostre opzioni.</p>
